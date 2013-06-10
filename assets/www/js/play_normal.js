@@ -4,6 +4,7 @@
     var score = 0;
     var arr2 = [];
     var myint;
+    var imageData;
     // Wait for Cordova to connect with the device
     //
   
@@ -72,7 +73,7 @@
     // A button will call this function
     //
     function capturePhoto() {
-      alert("Take a photo!");
+     // alert("Take a photo!");
     // Take picture using device camera and retrieve image as base64-encoded string
             navigator.camera.getPicture(start, onFail,{
             quality : 25, 
