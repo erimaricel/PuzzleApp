@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+#div1, #div2, #div3
+{float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+<script>
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev, id)
+{
+ev.preventDefault();
+if(document.getElementById(id).innerHTML.length < 10)
+{
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+if(id == 'container')
+{
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+}
+</script>
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event, this.id)" ondragover="allowDrop(event)">
+  <img src="img/dart.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31"></div>
+<div id="div2" ondrop="drop(event, this.id)" ondragover="allowDrop(event)"></div>
+<div id="div3" ondrop="drop(event, this.id)" ondragover="allowDrop(event)"></div>
+<span draggable="true" ondragstart="drag(event)" id="drag2" style='width: 100px;'> weeee </span>
+<div ondrop="drop(event, this.id)" ondragover="allowDrop(event)" id='container' style='float: left; height: 500px; width: 100%; border: 1px solid black'></div>
+</body>
+</html>
