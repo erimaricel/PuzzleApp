@@ -18,16 +18,24 @@
     //
     function onDeviceReady() {
       // navigator.notification.alert("Application Started");
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         capturePhoto();
     }
 
-    function gotFS(fileSystem) {
-       fileSystem.root.getDirectory("eriTest", {create: true});
-    }
+    function onRequestFileSystemSuccess(fileSystem) { 
+        var entry=fileSystem.root; 
+        entry.getDirectory("example", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+    } 
 
+    function onGetDirectorySuccess(dir) { 
+          console.log("Created dir "+dir.name); 
+    } 
+
+    function onGetDirectoryFail(error) { 
+         console.log("Error creating directory "+error.code); 
+    } 
     // Called when a photo is successfully retrieved
     //
     function onPhotoDataSuccess(imageData) {
