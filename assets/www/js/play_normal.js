@@ -26,7 +26,7 @@
 
     function onRequestFileSystemSuccess(fileSystem) { 
         var entry=fileSystem.root; 
-        entry.getDirectory("example", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
     } 
 
     function onGetDirectorySuccess(dir) { 
