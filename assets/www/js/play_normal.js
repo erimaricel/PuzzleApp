@@ -7,6 +7,7 @@
     var imageData;
     var fileSystem;
     var gallery_cnt;
+    var slashcntr = 0;
     // Wait for Cordova to connect with the device
     //
   
@@ -174,12 +175,14 @@
 
           // move the directory to a new directory and rename it
           imageData.moveTo(parentEntry, newName, successMove, failMove);*/
-          window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, moveFile, null);
+          //window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, moveFile, null);
 
           /*var smallImage = document.getElementById('image1');
           smallImage.style.display = 'block';
+
           smallImage.src = /*"data:image/jpeg;base64," +*/ //imageData;*/
           //addFolder();
+          moveFile(imageData);
           navigator.app.exitApp();
           return true;
         }
@@ -189,8 +192,21 @@
         }
     }
 
-    function moveFile(fileSystem){
-        alert(fileSystem);
+    function moveFile(imageData){
+       var fileURI = imageData;
+       alert(fileURI);
+       var position = fileURI.lastIndexOf("\\");
+       alert(position);
+       var folderName = "PuzzlePic";
+       var galleryFolder = [fileURI.slice(0, position), folderName, fileURI.slice(position)].join('');
+       alert(galleryFolder);
+
+       parentEntry = new DirectoryEntry({fullPath: galleryFolder});
+
+    // copy the file to a new directory and rename it
+      fileURI.copyTo(parentEntry, "", null, null);
+       
+       /* alert(fileSystem);
         var parent = fileSystem.root.PuzzlePic,
           newName = "gallerySample", //need to change
 
@@ -230,7 +246,7 @@
 
 
     function start(imageData) {
-      imageData=imageData;
+      var imageData=imageData;
 
       touchinit();
       
