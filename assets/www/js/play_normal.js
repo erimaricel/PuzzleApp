@@ -25,7 +25,7 @@
     }
 
     function gotFS(fileSystem) {
-       fileSystem.root.getDirectory("eriTest", {create: true}, gotDir);
+       fileSystem.root.getDirectory("eriTest", {create: true});
     }
 
     // Called when a photo is successfully retrieved
