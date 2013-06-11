@@ -152,7 +152,7 @@
 
     function checkwin(imageData)
     {
-       alert("Inside checkwin");
+       //alert("Inside checkwin");
        var z=1;
        var win = 0;
         $('.place').each(function(i, obj) 
@@ -200,11 +200,15 @@
        position = fileURI.lastIndexOf('/');
        alert(position+"--->position");
 
-       var folderName = "/PuzzlePic";
-       var galleryFolder = [fileURI.slice(0, position), folderName, fileURI.slice(position)].join('');
-       alert(galleryFolder+"---->galleryFolder");
+       var entry=fileURI.slice(position); 
+       alert(entry);
+        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
 
+      var folderName = "/PuzzlePic";
+       var galleryFolder = [fileURI.slice(0, position), folderName, fileURI.slice(position)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
+       alert(galleryFolder+"---->galleryFolder");
        parentEntry = new DirectoryEntry({fullPath: galleryFolder});
+
 
     // copy the file to a new directory and rename it
       fileURI.copyTo(parentEntry, "", null, null);
