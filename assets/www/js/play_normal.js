@@ -148,8 +148,9 @@
       event.preventDefault();
     }
 
-    function checkwin(imageData, fileSystem)
+    function checkwin(imageData)
     {
+       alert("Inside checkwin");
        var z=1;
        var win = 0;
         $('.place').each(function(i, obj) 
@@ -165,14 +166,15 @@
           clearInterval(myint);
           alert("Puzzle successfully solved!");
           alert(imageData);
-          alert(fileSystem);
+          /*alert(fileSystem);
           var parent = fileSystem.root.PuzzlePic,
           newName = "gallerySample", //need to change
 
           parentEntry = new DirectoryEntry({fullPath: parent});
 
           // move the directory to a new directory and rename it
-          imageData.moveTo(parentEntry, newName, successMove, failMove);
+          imageData.moveTo(parentEntry, newName, successMove, failMove);*/
+          window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, moveFile, null);
 
           /*var smallImage = document.getElementById('image1');
           smallImage.style.display = 'block';
@@ -185,6 +187,18 @@
         {
           return false;
         }
+    }
+
+    function moveFile(fileSystem){
+        alert(fileSystem);
+        var parent = fileSystem.root.PuzzlePic,
+          newName = "gallerySample", //need to change
+
+          parentEntry = new DirectoryEntry({fullPath: parent});
+          alert(parent);
+
+          // move the directory to a new directory and rename it
+          imageData.moveTo(parentEntry, newName, successMove, failMove);*/
     }
 
     function successMove(){
@@ -263,7 +277,7 @@
                           document.getElementById('points').innerText = parseInt(score);
                 }
               }
-            checkwin(imageData);
+             checkwin(imageData);
             }
         }
       });     
