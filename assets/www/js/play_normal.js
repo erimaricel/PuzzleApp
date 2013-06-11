@@ -200,7 +200,7 @@
        position = fileURI.lastIndexOf('/');
        alert(position+"--->position");
 
-       var entry=fileURI.slice(position); 
+       var entry=fileURI.slice(position, -1); 
        alert(entry);
         entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
 
