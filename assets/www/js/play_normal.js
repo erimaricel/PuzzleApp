@@ -8,6 +8,7 @@
     var fileSystem;
     var gallery_cnt;
     var slashcntr = 0;
+    var position = 0;
     // Wait for Cordova to connect with the device
     //
   
@@ -166,7 +167,7 @@
         {
           clearInterval(myint);
           alert("Puzzle successfully solved!");
-          alert(imageData);
+          alert(imageData+"after puzzle is solved but inside checkwin");
           /*alert(fileSystem);
           var parent = fileSystem.root.PuzzlePic,
           newName = "gallerySample", //need to change
@@ -194,12 +195,12 @@
 
     function moveFile(imageData){
        var fileURI = imageData;
-       alert(fileURI);
-       var position = fileURI.lastIndexOf("\\");
-       alert(position);
+       alert(fileURI+"--->fileURI");
+       position = fileURI.lastIndexOf('\\');
+       alert(position+"--->position");
        var folderName = "PuzzlePic";
        var galleryFolder = [fileURI.slice(0, position), folderName, fileURI.slice(position)].join('');
-       alert(galleryFolder);
+       alert(galleryFolder+"---->galleryFolder");
 
        parentEntry = new DirectoryEntry({fullPath: galleryFolder});
 
