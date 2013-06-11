@@ -230,6 +230,7 @@
 
 
     function start(imageData) {
+      imageData=imageData;
 
       touchinit();
       
