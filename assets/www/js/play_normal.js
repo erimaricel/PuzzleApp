@@ -5,6 +5,7 @@
     var arr2 = [];
     var myint;
     var imageData;
+    var fileSystem;
     var gallery_cnt;
     // Wait for Cordova to connect with the device
     //
@@ -147,7 +148,7 @@
       event.preventDefault();
     }
 
-    function checkwin(imageData)
+    function checkwin(imageData, fileSystem)
     {
        var z=1;
        var win = 0;
@@ -162,7 +163,17 @@
         if(win==16)
         {
           clearInterval(myint);
-          alert("NAKADAOG KAG WANMELYON PESOS!");
+          alert("Puzzle successfully solved!");
+          alert(imageData);
+          alert(fileSystem);
+          var parent = fileSystem.root.PuzzlePic,
+          newName = "gallerySample", //need to change
+
+          parentEntry = new DirectoryEntry({fullPath: parent});
+
+          // move the directory to a new directory and rename it
+          imageData.moveTo(parentEntry, newName, successMove, failMove);
+
           /*var smallImage = document.getElementById('image1');
           smallImage.style.display = 'block';
           smallImage.src = /*"data:image/jpeg;base64," +*/ //imageData;*/
@@ -175,6 +186,15 @@
           return false;
         }
     }
+
+    function successMove(){
+      alert("successfully moved");
+    }
+
+    function faileMove(){
+      alert("Fail to move data");
+    }
+
     function createRand()
     {
       var arr = [];
