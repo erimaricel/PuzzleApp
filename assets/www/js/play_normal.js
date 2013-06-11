@@ -5,6 +5,7 @@
     var arr2 = [];
     var myint;
     var imageData;
+    var gallery_cnt;
     // Wait for Cordova to connect with the device
     //
   
@@ -17,9 +18,14 @@
     //
     function onDeviceReady() {
       // navigator.notification.alert("Application Started");
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         capturePhoto();
+    }
+
+    function gotFS(fileSystem) {
+       fileSystem.root.getDirectory("eriTest", {create: true}, gotDir);
     }
 
     // Called when a photo is successfully retrieved
@@ -148,10 +154,11 @@
         if(win==16)
         {
           clearInterval(myint);
-          //alert("NAKADAOG KAG WANMELYON PESOS!");
-          var smallImage = document.getElementById('image1');
+          alert("NAKADAOG KAG WANMELYON PESOS!");
+          /*var smallImage = document.getElementById('image1');
           smallImage.style.display = 'block';
-          smallImage.src = /*"data:image/jpeg;base64," +*/ imageData;
+          smallImage.src = /*"data:image/jpeg;base64," +*/ //imageData;*/
+          //addFolder();
           navigator.app.exitApp();
           return true;
         }
@@ -255,3 +262,5 @@
         alert("Game Over");
       }
     }
+
+  
