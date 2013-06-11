@@ -196,8 +196,10 @@
     function moveFile(imageData){
        var fileURI = imageData;
        alert(fileURI+"--->fileURI");
-       position = fileURI.lastIndexOf('\\');
+
+       position = fileURI.lastIndexOf('/');
        alert(position+"--->position");
+
        var folderName = "PuzzlePic";
        var galleryFolder = [fileURI.slice(0, position), folderName, fileURI.slice(position)].join('');
        alert(galleryFolder+"---->galleryFolder");
