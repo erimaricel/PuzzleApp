@@ -203,37 +203,27 @@
 
     function moveFile(imageData){
 
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess /*function(fileSystem) {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
 
-      //Do something
+            var entry=fileSystem.root; 
 
-            function createDirectory(fileSystem, imageData) {
+            function createDirectory(entry, imageData) {
        //Do something even interesting
                   alert("inside createDirectory");
-                  var entry=fileSystem.root; 
-                  entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, function(fileSystem) {
-
-                        function copyToGallery(fileSystem, imageData) {
+                  
+                  entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, function(parent) {
+                         alert("Parent Name: " + parent.name);
+                        /*function copyToGallery(entry, imageData) {
                             alert("inside copyToGallery");
                    //Do something even interesting
-                            parentEntry = new DirectoryEntry({fullPath: fileSystem});
+                            parentEntry = new DirectoryEntry({fullPath: entry});
                           // copy the file to a new directory and rename it
                             imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
                               
-                        }
-                    }, function(fileSystem) {
-
-                        function copyToGalleryFail(fileSystem, imageData) {
-                            alert("inside copyToGalleryFail");
-                   //Do something even interesting
-                            parentEntry = new DirectoryEntry({fullPath: fileSystem});
-                          // copy the file to a new directory and rename it
-                            imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
-                              
-                        }
-                    });
+                        }*/
+                    }, onGetDirectoryFail);
             }
-        }*/, null);
+        }, null);
        /*var fileURI = imageData;
        alert(fileURI+"--->fileURI");
 
