@@ -35,8 +35,16 @@
 
     function onGetDirectorySuccess(fileSystem) { 
           //var entry = fileSystem.root.fullPath+"/PuzzlePic";
-          var entry = fileSystem.root;
-          alert (entry+" -->Entry");
+          alert("inside onGetDirectorySuccess");
+          var folderPath = fileSystem.root.fullPath;
+          alert(folderPath+" -->folderPath");
+          copyToGallery(folderPath);
+          //alert (entry+" -->Entry");
+
+         // var directoryReader = fileSystem.createReader();
+
+          // Get a list of all the entries in the directory
+          //directoryReader.readEntries(readerSuccess,fail);
           //console.log("Created dir "+dir.name); 
           /*var myURI
           window.resolveLocalFileSystemURI("/mnt/sdcard/PuzzlePic", function(dirEntry) {
@@ -50,9 +58,9 @@
           //alert(galleryPath+" -->galleryPath");
           //var uri = galleryPath.toURI();
           //alert(uri+" PuzzlePic URI");
-          parentEntry = new DirectoryEntry({fullPath: entry+"/PuzzlePic"});
+          //parentEntry = new DirectoryEntry({fullPath: entry+"/PuzzlePic"});
                           // copy the file to a new directory and rename it
-          imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
+          //imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
     } 
 
     function onGetDirectoryFail(error) { 
@@ -284,17 +292,20 @@
         entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
     }
 
-    function copyToGallery (fileURI){
-       alert("inside copyToGallery")
-        var folderName = "PuzzlePic";
+    function copyToGallery (folderPath){
+      alert("inside copyToGallery");
+      var newPath= folderPath+"/PuzzlePic"
+      alert(newPath+" -->newPath");
+      // alert("inside copyToGallery")
+       // var folderName = "PuzzlePic";
       
-       var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
-       alert(galleryFolder+"---->galleryFolder");
-       parentEntry = new DirectoryEntry({fullPath: galleryFolder});
+      // var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
+      // alert(galleryFolder+"---->galleryFolder");
+       parentEntry = new DirectoryEntry({fullPath: newPath});
 
 
     // copy the file to a new directory and rename it
-      fileURI.copyTo(parentEntry, "sample.jpg", null, null);
+      imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
 
     }
 
