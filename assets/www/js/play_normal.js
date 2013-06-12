@@ -40,6 +40,8 @@
           alert(entry+" -->Entry");
           alert(imageData+" -->ImageData inside onGetDirectorySuccess");
           alert(galleryPath+" -->galleryPath");
+          var uri = PuzzlePic.toURI();
+          alert(uri+" PuzzlePic URI");
           //parentEntry = new DirectoryEntry({fullPath: galleryPath});
                           // copy the file to a new directory and rename it
           ///imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
