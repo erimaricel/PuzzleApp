@@ -33,8 +33,8 @@
         entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
     } 
 
-    function onGetDirectorySuccess(dir) { 
-          var entry = fs.root.fullPath+"/PuzzlePic";
+    function onGetDirectorySuccess(fileSystem) { 
+          var entry = fileSystem.root.fullPath+"/PuzzlePic";
           alert (entry+" -->Entry");
           //console.log("Created dir "+dir.name); 
           /*var myURI
