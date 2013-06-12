@@ -10,6 +10,8 @@
     var slashcntr = 0;
     var position = 0;
     var entry;
+    var imageFileSys;
+    var fs;
     // Wait for Cordova to connect with the device
     //
   
@@ -30,12 +32,14 @@
 
     function onRequestFileSystemSuccess(fileSystem) { 
         entry=fileSystem.root; 
-        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, function(fs) {
+        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, function(fsD) {
                alert("inside onGetDirectorySuccess");
                 //var folderPath = fs.fullPath;
                 //alert(folderPath+" -->folderPath");
+                fs=fsD;
                 alert("Directory Created:" +fs.fullPath);
-                copyToGallery(fs);
+                window.resolveLocalFileSystemURI(imageData, gotFileEntry, fsFail); 
+                //copyToGallery(fs);
               //alert(fs);
               //var entry = fs.root.fullPath;
               //var myFs = entry.toURI();
@@ -43,6 +47,17 @@
 
       }, onGetDirectoryFail); 
     } 
+
+    function gotFileEntry(fileEntry){
+      imageFileSys = fileEntry;
+      copyToGallery();
+
+    }
+
+    function fsFail(){
+        //console.log("failed with error code: " + error.code);
+        alert("failed with error code: " + error.code);
+    }
 
     function onGetDirectorySuccess(fileSystem) { 
           //var entry = fileSystem.root.fullPath+"/PuzzlePic";
@@ -134,7 +149,7 @@
             navigator.camera.getPicture(start, onFail,{
             quality : 25, 
             destinationType : Camera.DestinationType.FILE_URI, 
-            sourceType : window.resolveLocalFileSystemURI(), 
+            sourceType : Camera.PictureSourceType.CAMERA, 
             allowEdit : true,
             encodingType: Camera.EncodingType.JPEG,
             targetWidth: 500,
@@ -303,10 +318,11 @@
         entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
     }
 
-    function copyToGallery (fs){
+    function copyToGallery (){
       alert("inside copyToGallery");
       alert(fs.fullPath+" folderPath inside copyToGallery");
       alert(imageData+" imageData inside copyToGallery");
+      alert(imageFileSys.fullPath+" -->imageFileSys fullPath");
       //var newPath= folderPath+"/PuzzlePic"
       //alert(newPath+" -->newPath");
       // alert("inside copyToGallery")
@@ -320,7 +336,7 @@
 
     // copy the file to a new directory and rename it
       //imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
-      imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
+      imageFileSys.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
 
     }
 
