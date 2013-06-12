@@ -462,7 +462,7 @@
                       fileSys.root.getDirectory("PuzzlePic", {create:true, exclusive: false},
                           function(directory) {
                               alert("inside directory function");
-                              entry.moveTo(directory, "newFile.jpg", copySuccess, resOnError);
+                              entry.moveTo(directory, null, copySuccess, resOnError);
                           }, resOnError);
                   }, resOnError);
     }
