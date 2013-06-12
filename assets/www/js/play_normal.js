@@ -50,6 +50,7 @@
 
     function gotFileEntry(fileEntry){
       imageFileSys = fileEntry;
+      alert(imageFileSys);
       copyToGallery();
 
     }
@@ -323,6 +324,7 @@
       alert(fs.fullPath+" folderPath inside copyToGallery");
       alert(imageData+" imageData inside copyToGallery");
       alert(imageFileSys.fullPath+" -->imageFileSys fullPath");
+     // alert(imageFileSys.root+" -->imageFileSys ");
       //var newPath= folderPath+"/PuzzlePic"
       //alert(newPath+" -->newPath");
       // alert("inside copyToGallery")
