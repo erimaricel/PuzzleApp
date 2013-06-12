@@ -200,12 +200,15 @@
        position = fileURI.lastIndexOf('/');
        alert(position+"--->position");
 
-       var entry=fileURI.slice(position, fileURI.length - 1); 
-       alert(entry);
+       var endPos = fileURI.length - 1;
+       alert(endPos);
+       var entry=fileURI.slice(position, endPos); 
+       alert(entry+" after slicing the data");
         entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
 
-      var folderName = "/PuzzlePic";
-       var galleryFolder = [fileURI.slice(0, position), folderName, fileURI.slice(position)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
+      var folderName = "PuzzlePic";
+      var newPos = position + 1;
+       var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
        alert(galleryFolder+"---->galleryFolder");
        parentEntry = new DirectoryEntry({fullPath: galleryFolder});
 
