@@ -304,6 +304,8 @@
 
     function copyToGallery (folderPath){
       alert("inside copyToGallery");
+      alert(folderPath+" folderPath inside copyToGallery");
+      alert(imageData+" imageData inside copyToGallery");
       //var newPath= folderPath+"/PuzzlePic"
       //alert(newPath+" -->newPath");
       // alert("inside copyToGallery")
@@ -311,11 +313,13 @@
       
       // var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
       // alert(galleryFolder+"---->galleryFolder");
-       var parentEntry = new DirectoryEntry({fullPath: folderPath});
+      // var parentEntry = new DirectoryEntry({fullPath: folderPath});
+      //var parentEntry = new DirectoryEntry({fullPath: folderPath});
 
 
     // copy the file to a new directory and rename it
-      imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
+      //imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
+      imageData.copyTo(folderPath, "sample.jpg", copySucess, copyFail);
 
     }
 
