@@ -150,7 +150,7 @@
       event.preventDefault();
     }
 
-    function checkwin(imageData)
+    function checkwin(imageData, fileSystem)
     {
        //alert("Inside checkwin");
        var z=1;
@@ -183,6 +183,7 @@
 
           smallImage.src = /*"data:image/jpeg;base64," +*/ //imageData;*/
           //addFolder();
+          window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, moveFile, null); 
           moveFile(imageData);
           navigator.app.exitApp();
           return true;
@@ -202,12 +203,14 @@
 
        var endPos = fileURI.length - 1;
        alert(endPos);
-       var entry=fileURI.slice(0, position+1); 
+       var newPos = position + 1;
+       alert(newPos+"new Position");
+       var entry=fileURI.slice(0, newPos); 
        alert(entry+" after slicing the data");
         entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
 
       var folderName = "PuzzlePic";
-      var newPos = position + 1;
+      
        var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
        alert(galleryFolder+"---->galleryFolder");
        parentEntry = new DirectoryEntry({fullPath: galleryFolder});
