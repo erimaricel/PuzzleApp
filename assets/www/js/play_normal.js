@@ -34,8 +34,7 @@
                alert("inside onGetDirectorySuccess");
                 //var folderPath = fs.fullPath;
                 //alert(folderPath+" -->folderPath");
-                alert(fs);
-                //copyToGallery(folderPath);
+                alert("Directory Created:" +fs.fullPath);
                 copyToGallery(fs);
               //alert(fs);
               //var entry = fs.root.fullPath;
@@ -135,7 +134,7 @@
             navigator.camera.getPicture(start, onFail,{
             quality : 25, 
             destinationType : Camera.DestinationType.FILE_URI, 
-            sourceType : Camera.PictureSourceType.CAMERA, 
+            sourceType : window.resolveLocalFileSystemURI(), 
             allowEdit : true,
             encodingType: Camera.EncodingType.JPEG,
             targetWidth: 500,
@@ -306,8 +305,7 @@
 
     function copyToGallery (fs){
       alert("inside copyToGallery");
-      //alert(folderPath+" folderPath inside copyToGallery");
-      alert(fs+" folderPath inside copyToGallery");
+      alert(fs.fullPath+" folderPath inside copyToGallery");
       alert(imageData+" imageData inside copyToGallery");
       //var newPath= folderPath+"/PuzzlePic"
       //alert(newPath+" -->newPath");
