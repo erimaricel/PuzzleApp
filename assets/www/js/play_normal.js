@@ -183,7 +183,7 @@
 
           smallImage.src = /*"data:image/jpeg;base64," +*/ //imageData;*/
           //addFolder();
-          window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, moveFile, null); 
+          
           moveFile(imageData);
           navigator.app.exitApp();
           return true;
@@ -192,6 +192,11 @@
         {
           return false;
         }
+    }
+
+    function onSuccess(fileSystem){
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, moveFile, null); 
+      return fileSystem
     }
 
     function moveFile(imageData){
@@ -207,17 +212,10 @@
        alert(newPos+"new Position");
        var entry=fileURI.slice(0, newPos); 
        alert(entry+" after slicing the data");
-        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
+       createDirectory(entry);
+       copyToGalleryFolder (fileURI);
 
-      var folderName = "PuzzlePic";
       
-       var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
-       alert(galleryFolder+"---->galleryFolder");
-       parentEntry = new DirectoryEntry({fullPath: galleryFolder});
-
-
-    // copy the file to a new directory and rename it
-      fileURI.copyTo(parentEntry, "", null, null);
        
        /* alert(fileSystem);
         var parent = fileSystem.root.PuzzlePic,
@@ -228,6 +226,24 @@
 
           // move the directory to a new directory and rename it
           imageData.moveTo(parentEntry, newName, successMove, failMove);*/
+    }
+
+    function createDirectory(entry){
+        alert("inside createDirectory");
+        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, null, null);
+    }
+
+    function copyToGallery (fileURI){
+        var folderName = "PuzzlePic";
+      
+       var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
+       alert(galleryFolder+"---->galleryFolder");
+       parentEntry = new DirectoryEntry({fullPath: galleryFolder});
+
+
+    // copy the file to a new directory and rename it
+      fileURI.copyTo(parentEntry, "sample.jpg", null, null);
+
     }
 
     function successMove(){

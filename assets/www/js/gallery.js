@@ -6,7 +6,7 @@ function viewGallery (){
 
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 	function(fs) {
-				console.log("Root = " + fs.root.fullPath);
+				/*console.log("Root = " + fs.root.fullPath);
 				var directoryReader = fs.root.createReader();
 				directoryReader.readEntries(function(entries) {
 					var i;
@@ -16,7 +16,8 @@ function viewGallery (){
 				}, function (error) {
 
 						alert(error.code);
-				})
+				})*/
+				alert(fs);
 			}, function (error) {
 				alert(error.code);
 			});
