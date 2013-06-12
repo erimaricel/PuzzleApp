@@ -30,15 +30,25 @@
 
     function onRequestFileSystemSuccess(fileSystem) { 
         entry=fileSystem.root; 
-        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, function(fs) {
+               alert("inside onGetDirectorySuccess");
+                var folderPath = fs.fullPath;
+                alert(folderPath+" -->folderPath");
+                //copyToGallery(folderPath);
+              //alert(fs);
+              //var entry = fs.root.fullPath;
+              //var myFs = entry.toURI();
+              //alert(entry+" -->myFs");
+
+      }, onGetDirectoryFail); 
     } 
 
     function onGetDirectorySuccess(fileSystem) { 
           //var entry = fileSystem.root.fullPath+"/PuzzlePic";
-          alert("inside onGetDirectorySuccess");
-          var folderPath = fileSystem.root.fullPath;
-          alert(folderPath+" -->folderPath");
-          copyToGallery(folderPath);
+         // alert("inside onGetDirectorySuccess");
+         // var folderPath = fileSystem.root.fullPath;
+         // alert(folderPath+" -->folderPath");
+         // copyToGallery(folderPath);
           //alert (entry+" -->Entry");
 
          // var directoryReader = fileSystem.createReader();
