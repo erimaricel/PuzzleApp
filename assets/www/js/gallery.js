@@ -18,6 +18,10 @@ function viewGallery (){
 						alert(error.code);
 				})*/
 				alert(fs);
+				var entry = fs.root;
+				var myFs = entry.toURI();
+				alert(myFs+" -->myFs");
+
 			}, function (error) {
 				alert(error.code);
 			});
