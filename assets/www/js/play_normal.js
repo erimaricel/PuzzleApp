@@ -319,7 +319,7 @@
 
     // copy the file to a new directory and rename it
       //imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
-      imageData.copyTo(folderPath, "sample.jpg", copySucess, copyFail);
+      imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
 
     }
 
