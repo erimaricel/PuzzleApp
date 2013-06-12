@@ -37,9 +37,12 @@
           //console.log("Created dir "+dir.name); 
           var galleryPath = entry + "/PuzzlePic";
           alert(dir+" inside onGetDirectorySuccess");
-          parentEntry = new DirectoryEntry({fullPath: galleryPath});
+          alert(entry+" -->Entry");
+          alert(imageData+" -->ImageData inside onGetDirectorySuccess");
+          alert(galleryPath+" -->galleryPath");
+          //parentEntry = new DirectoryEntry({fullPath: galleryPath});
                           // copy the file to a new directory and rename it
-          imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
+          ///imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
     } 
 
     function onGetDirectoryFail(error) { 
