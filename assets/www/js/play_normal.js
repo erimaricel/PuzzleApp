@@ -9,6 +9,7 @@
     var gallery_cnt;
     var slashcntr = 0;
     var position = 0;
+    var entry;
     // Wait for Cordova to connect with the device
     //
   
@@ -28,13 +29,17 @@
     }
 
     function onRequestFileSystemSuccess(fileSystem) { 
-        var entry=fileSystem.root; 
+        entry=fileSystem.root; 
         entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
     } 
 
     function onGetDirectorySuccess(dir) { 
           //console.log("Created dir "+dir.name); 
+          var galleryPath = filesystem.root + "/PuzzlePic";
           alert(dir+" inside onGetDirectorySuccess");
+          parentEntry = new DirectoryEntry({fullPath: galleryPath});
+                          // copy the file to a new directory and rename it
+          imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
     } 
 
     function onGetDirectoryFail(error) { 
@@ -152,7 +157,7 @@
       event.preventDefault();
     }
 
-    function checkwin(imageData, fileSystem)
+    function checkwin()
     {
        //alert("Inside checkwin");
        var z=1;
@@ -169,7 +174,7 @@
         {
           clearInterval(myint);
           alert("Puzzle successfully solved!");
-          alert(imageData+"after puzzle is solved but inside checkwin");
+          alert(imageData+" after puzzle is solved but inside checkwin");
           /*alert(fileSystem);
           var parent = fileSystem.root.PuzzlePic,
           newName = "gallerySample", //need to change
@@ -186,7 +191,7 @@
           smallImage.src = /*"data:image/jpeg;base64," +*/ //imageData;*/
           //addFolder();
           
-          moveFile(imageData);
+          moveFile();
           navigator.app.exitApp();
           return true;
         }
@@ -203,7 +208,7 @@
 
     function moveFile(imageData){
 
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess/*function(fileSystem) {
 
             var entry=fileSystem.root; 
 
@@ -221,9 +226,9 @@
                             imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
                               
                         }*/
-                    }, onGetDirectoryFail);
-            }
-        }, null);
+                    //}, onGetDirectoryFail);
+            //}
+       /* }*/, null);
        /*var fileURI = imageData;
        alert(fileURI+"--->fileURI");
 
@@ -308,8 +313,8 @@
     }
 
 
-    function start(imageData) {
-      var imageData=imageData;
+    function start(imageURI) {
+      imageData=imageURI;
 
       touchinit();
       
@@ -357,7 +362,7 @@
                           document.getElementById('points').innerText = parseInt(score);
                 }
               }
-             checkwin(imageData);
+             checkwin();
             }
         }
       });     
