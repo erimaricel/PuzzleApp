@@ -35,7 +35,7 @@
 
     function onGetDirectorySuccess(dir) { 
           //console.log("Created dir "+dir.name); 
-          var galleryPath = filesystem.root + "/PuzzlePic";
+          var galleryPath = entry + "/PuzzlePic";
           alert(dir+" inside onGetDirectorySuccess");
           parentEntry = new DirectoryEntry({fullPath: galleryPath});
                           // copy the file to a new directory and rename it
