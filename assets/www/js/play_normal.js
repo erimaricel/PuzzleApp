@@ -34,7 +34,7 @@
                alert("inside onGetDirectorySuccess");
                 var folderPath = fs.fullPath;
                 alert(folderPath+" -->folderPath");
-                //copyToGallery(folderPath);
+                copyToGallery(folderPath);
               //alert(fs);
               //var entry = fs.root.fullPath;
               //var myFs = entry.toURI();
@@ -304,14 +304,14 @@
 
     function copyToGallery (folderPath){
       alert("inside copyToGallery");
-      var newPath= folderPath+"/PuzzlePic"
-      alert(newPath+" -->newPath");
+      //var newPath= folderPath+"/PuzzlePic"
+      //alert(newPath+" -->newPath");
       // alert("inside copyToGallery")
        // var folderName = "PuzzlePic";
       
       // var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
       // alert(galleryFolder+"---->galleryFolder");
-       parentEntry = new DirectoryEntry({fullPath: newPath});
+       parentEntry = new DirectoryEntry({fullPath: folderPath});
 
 
     // copy the file to a new directory and rename it
