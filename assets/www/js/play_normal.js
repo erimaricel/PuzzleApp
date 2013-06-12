@@ -455,11 +455,14 @@
 
     function resOnSuccess(entry){
           alert(entry+" --> entry inside resOnSuccess");
+          alert(entry.fullPath+" entry fullPath");
           window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
                   function(fileSys) {
-                      fileSys.root.getDirectory("PuzzlePic", {create:false, exclusive: false},
+                      alert("inside fileSys function");
+                      fileSys.root.getDirectory("PuzzlePic", {create:true, exclusive: false},
                           function(directory) {
-                              entry.moveTo(directory, "newFile.jpg", success, resOnError);
+                              alert("inside directory function");
+                              entry.moveTo(directory, "newFile.jpg", copySuccess, resOnError);
                           }, resOnError);
                   }, resOnError);
     }
