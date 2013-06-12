@@ -311,7 +311,7 @@
       
       // var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
       // alert(galleryFolder+"---->galleryFolder");
-       parentEntry = new DirectoryEntry({fullPath: folderPath});
+       var parentEntry = new DirectoryEntry({fullPath: folderPath});
 
 
     // copy the file to a new directory and rename it
