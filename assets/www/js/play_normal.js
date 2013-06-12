@@ -333,12 +333,12 @@
       // var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
       // alert(galleryFolder+"---->galleryFolder");
       // var parentEntry = new DirectoryEntry({fullPath: folderPath});
-      //var parentEntry = new DirectoryEntry({fullPath: fs});
+      var parentEntry = new DirectoryEntry({fullPath: fs});
 
 
     // copy the file to a new directory and rename it
       //imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
-      imageFileSys.copyTo(fs, null, copySucess, copyFail);
+      imageFileSys.copyTo(parentEntry, null, copySucess, copyFail);
 
     }
 
