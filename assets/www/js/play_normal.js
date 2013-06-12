@@ -34,7 +34,7 @@
 
     function onGetDirectorySuccess(dir) { 
           //console.log("Created dir "+dir.name); 
-          alert(dir);
+          alert(dir+" inside onGetDirectorySuccess");
     } 
 
     function onGetDirectoryFail(error) { 
