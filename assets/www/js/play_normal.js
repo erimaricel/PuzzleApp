@@ -211,27 +211,7 @@
        //Do something even interesting
                   alert("inside createDirectory");
                   var entry=fileSystem.root; 
-                  entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, function(fileSystem) {
-
-                        function copyToGallery(fileSystem, imageData) {
-                            alert("inside copyToGallery");
-                   //Do something even interesting
-                            parentEntry = new DirectoryEntry({fullPath: fileSystem});
-                          // copy the file to a new directory and rename it
-                            imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
-                              
-                        }
-                    }, function(fileSystem) {
-
-                        function copyToGalleryFail(fileSystem, imageData) {
-                            alert("inside copyToGalleryFail");
-                   //Do something even interesting
-                            parentEntry = new DirectoryEntry({fullPath: fileSystem});
-                          // copy the file to a new directory and rename it
-                            imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
-                              
-                        }
-                    });
+                  entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
             }
         }, null);
        /*var fileURI = imageData;
