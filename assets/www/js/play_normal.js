@@ -90,7 +90,7 @@
           //imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
     } 
 
-    function onGetDirectoryFail(error) { 
+    function resOnError(error) { 
          //console.log("Error creating directory "+error.code); 
          alert("Error can not create directory" +error.code)
     } 
@@ -254,7 +254,7 @@
       return fileSystem
     }
 
-    function moveFile(imageData){
+    /*function moveFile(imageData){
 
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess/*function(fileSystem) {
 
@@ -276,7 +276,7 @@
                         }*/
                     //}, onGetDirectoryFail);
             //}
-       /* }*/, null);
+       /* }, null);
        /*var fileURI = imageData;
        alert(fileURI+"--->fileURI");
 
@@ -303,7 +303,7 @@
 
           // move the directory to a new directory and rename it
           imageData.moveTo(parentEntry, newName, successMove, failMove);*/
-    }
+    //}
 
     function copySuccess(data){
         alert("copySuccess");
@@ -333,12 +333,12 @@
       // var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
       // alert(galleryFolder+"---->galleryFolder");
       // var parentEntry = new DirectoryEntry({fullPath: folderPath});
-      var parentEntry = new DirectoryEntry({fullPath: fs});
+      //var parentEntry = new DirectoryEntry({fullPath: fs});
 
 
     // copy the file to a new directory and rename it
       //imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
-      imageFileSys.copyTo(parentEntry, null, copySucess, copyFail);
+      imageFileSys.copyTo(fs, null, copySucess, copyFail);
 
     }
 
@@ -446,6 +446,22 @@
         clearInterval(myint);
         alert("Game Over");
       }
+    }
+
+    function moveFile(){
+      alert("now in simon's moveFile")
+      window.resolveLocalFileSystemURI(imageData, resOnSuccess, resOnError);
+    }
+
+    function resOnSuccess(entry){
+          alert(entry+" --> entry inside resOnSuccess");
+          window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                  function(fileSys) {
+                      fileSys.root.getDirectory("PuzzlePic", {create:false, exclusive: false},
+                          function(directory) {
+                              entry.moveTo(directory, "newFile.jpg", success, resOnError);
+                          }, resOnError);
+                  }, resOnError);
     }
 
   
