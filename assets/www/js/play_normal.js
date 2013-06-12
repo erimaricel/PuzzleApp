@@ -34,12 +34,14 @@
     } 
 
     function onGetDirectorySuccess(dir) { 
+          var entry = fs.root.fullPath+"/PuzzlePic";
+          alert (entry+" -->Entry");
           //console.log("Created dir "+dir.name); 
-          var myURI
+          /*var myURI
           window.resolveLocalFileSystemURI("/mnt/sdcard/PuzzlePic", function(dirEntry) {
             myURI = dirEntry;
           });
-          alert(myURI+" -->myURI");
+          alert(myURI+" -->myURI");*/
           //var galleryPath = entry + "/PuzzlePic";
           //alert(dir+" inside onGetDirectorySuccess");
           //alert(entry+" -->Entry");

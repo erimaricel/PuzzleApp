@@ -18,9 +18,9 @@ function viewGallery (){
 						alert(error.code);
 				})*/
 				alert(fs);
-				var entry = fs.root;
-				var myFs = entry.toURI();
-				alert(myFs+" -->myFs");
+				var entry = fs.root.fullPath;
+				//var myFs = entry.toURI();
+				alert(entry+" -->myFs");
 
 			}, function (error) {
 				alert(error.code);
