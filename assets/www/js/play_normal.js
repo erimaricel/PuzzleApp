@@ -33,7 +33,8 @@
     } 
 
     function onGetDirectorySuccess(dir) { 
-          console.log("Created dir "+dir.name); 
+          //console.log("Created dir "+dir.name); 
+          alert(dir);
     } 
 
     function onGetDirectoryFail(error) { 
@@ -213,7 +214,7 @@
        var entry=fileURI.slice(0, newPos); 
        alert(entry+" after slicing the data");
        createDirectory(entry);
-       copyToGalleryFolder (fileURI);
+       copyToGallery (fileURI);
 
       
        
@@ -230,10 +231,11 @@
 
     function createDirectory(entry){
         alert("inside createDirectory");
-        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, null, null);
+        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, null);
     }
 
     function copyToGallery (fileURI){
+       alert("inside copyToGallery")
         var folderName = "PuzzlePic";
       
        var galleryFolder = [fileURI.slice(0, newPos), folderName, fileURI.slice(newPos)].join(''); //directory of photo/PuzzlePic/hgajkfgl.jpg
