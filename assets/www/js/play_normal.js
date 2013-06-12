@@ -38,7 +38,8 @@
     } 
 
     function onGetDirectoryFail(error) { 
-         console.log("Error creating directory "+error.code); 
+         //console.log("Error creating directory "+error.code); 
+         alert("Error can not create directory" +error.code)
     } 
     // Called when a photo is successfully retrieved
     //
@@ -231,7 +232,7 @@
 
     function createDirectory(entry){
         alert("inside createDirectory");
-        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, null);
+        entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
     }
 
     function copyToGallery (fileURI){
