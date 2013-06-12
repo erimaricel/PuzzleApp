@@ -202,7 +202,29 @@
     }
 
     function moveFile(imageData){
-       var fileURI = imageData;
+
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+
+      //Do something
+
+            function createDirectory(fileSystem, imageData) {
+       //Do something even interesting
+                  alert("inside createDirectory");
+                  var entry=fileSystem.root; 
+                  entry.getDirectory("PuzzlePic", {create: true, exclusive: false}, function(fileSystem) {
+
+                        function copyToGallery(fileSystem, imageData) {
+                            alert("inside copyToGallery");
+                   //Do something even interesting
+                            parentEntry = new DirectoryEntry({fullPath: fileSystem});
+                          // copy the file to a new directory and rename it
+                            imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
+                              
+                        }
+                    }, onGetDirectoryFail);
+            }
+        }, fail);
+       /*var fileURI = imageData;
        alert(fileURI+"--->fileURI");
 
        position = fileURI.lastIndexOf('/');
@@ -215,7 +237,7 @@
        var entry=fileURI.slice(0, newPos); 
        alert(entry+" after slicing the data");
        createDirectory(entry);
-       copyToGallery (fileURI);
+       copyToGallery (fileURI);*/
 
       
        
@@ -229,6 +251,15 @@
           // move the directory to a new directory and rename it
           imageData.moveTo(parentEntry, newName, successMove, failMove);*/
     }
+
+    function copySuccess(data){
+        alert("copySuccess");
+    }
+
+    function copyFail(data){
+        alert("Fail");
+    }
+
 
     function createDirectory(entry){
         alert("inside createDirectory");
