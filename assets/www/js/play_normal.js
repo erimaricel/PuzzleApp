@@ -34,7 +34,8 @@
     } 
 
     function onGetDirectorySuccess(fileSystem) { 
-          var entry = fileSystem.root.fullPath+"/PuzzlePic";
+          //var entry = fileSystem.root.fullPath+"/PuzzlePic";
+          var entry = fileSystem.root;
           alert (entry+" -->Entry");
           //console.log("Created dir "+dir.name); 
           /*var myURI
@@ -49,9 +50,9 @@
           //alert(galleryPath+" -->galleryPath");
           //var uri = galleryPath.toURI();
           //alert(uri+" PuzzlePic URI");
-          //parentEntry = new DirectoryEntry({fullPath: galleryPath});
+          parentEntry = new DirectoryEntry({fullPath: entry+"/PuzzlePic"});
                           // copy the file to a new directory and rename it
-          ///imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
+          imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
     } 
 
     function onGetDirectoryFail(error) { 
