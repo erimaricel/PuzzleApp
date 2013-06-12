@@ -21,7 +21,7 @@
     //
     function onDeviceReady() {
       // navigator.notification.alert("Application Started");
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+       // window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         capturePhoto();
@@ -203,7 +203,7 @@
 
     function moveFile(imageData){
 
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,  function(fileSystem) {
 
       //Do something
 
@@ -221,9 +221,19 @@
                             imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
                               
                         }
-                    }, onGetDirectoryFail);
+                    }, function(fileSystem) {
+
+                        function copyToGalleryFail(fileSystem, imageData) {
+                            alert("inside copyToGalleryFail");
+                   //Do something even interesting
+                            parentEntry = new DirectoryEntry({fullPath: fileSystem});
+                          // copy the file to a new directory and rename it
+                            imageData.copyTo(parentEntry, "sample.jpg", copySucess, copyFail);
+                              
+                        }
+                    });
             }
-        }, fail);
+        }, null);
        /*var fileURI = imageData;
        alert(fileURI+"--->fileURI");
 
