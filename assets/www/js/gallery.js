@@ -21,7 +21,8 @@ function viewGallery (){
 								//console.log(entries[i].name);
 								alert(entries[i].name+" entries name displayed in " +i);
 								alert(entries[i].fullPath+" entries fullPath displayed in " +i);
-								imgSrc[i] = entries.fullPath;
+								//imgSrc[i] = entries.fullPath;
+								imgSrc[i] = entries.name;
 							}
 
 							displayImages();
