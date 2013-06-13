@@ -44,7 +44,7 @@ function viewGallery (){
 
 							}
 
-							displayImages();
+							//displayImages();
 						});
                               
                 }, resOnError);
