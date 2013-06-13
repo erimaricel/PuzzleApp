@@ -19,7 +19,8 @@ function viewGallery (){
 							var i;
 							//imgSrc.length = entries.length;
 							for (i=0; i<entries.length; i++) {
-								$("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+entries[i].fullPath+"'/>"); 
+								alert("entries");
+								$("#gallery-content").appendChild("<img width='20px' height='20px'  id='img"+i+"' src='"+entries[i].fullPath+"'/>"); 
 								//console.log(entries[i].name);
 								//alert(entries[i].name+" entries name displayed in " +i);
 								//alert(entries[i].fullPath+" entries root fullPath displayed in " +i);
