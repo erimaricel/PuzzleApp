@@ -39,6 +39,7 @@ function resOnError(error) {
 } 
 
 function displayImages () {
+	alert("inside displayImages function");
 	var i;
 	for (var i = 0; i <= imgSrc.length; i++) {
 		$("#gallery-content").append("<img id='img"+i+"' src='"+imgSrc[i]+"' width='200px' height='200px'/>");
