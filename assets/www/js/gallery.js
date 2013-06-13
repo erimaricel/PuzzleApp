@@ -20,9 +20,9 @@ function viewGallery (){
 							for (i=0; i<entries.length; i++) {
 								//console.log(entries[i].name);
 								alert(entries[i].name+" entries name displayed in " +i);
-								alert(entries[i].root.fullPath+" entries root fullPath displayed in " +i);
-								imgSrc[i] = entries.root.fullPath;
-								//imgSrc[i] = entries.name;
+								alert(entries[i].fullPath+" entries root fullPath displayed in " +i);
+								//imgSrc[i] = entries.root.fullPath;
+								imgSrc[i] = entries.name;
 							}
 
 							displayImages();
