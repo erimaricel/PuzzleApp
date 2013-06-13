@@ -17,7 +17,7 @@ function viewGallery (){
 							var i;
 							for (i=0; i<entries.length; i++) {
 								//console.log(entries[i].name);
-								alert(entries[i]+" entries displayed in " +i);
+								alert(entries[i].fullPath+" entries displayed in " +i);
 							}
 						});
                               
