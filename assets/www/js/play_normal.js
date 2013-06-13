@@ -240,7 +240,7 @@
           //addFolder();
           
           moveFile();
-          navigator.app.exitApp();
+          //navigator.app.exitApp();
           return true;
         }
         else
