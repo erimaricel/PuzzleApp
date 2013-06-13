@@ -23,8 +23,10 @@ function viewGallery (){
 								alert(entries[i].name+" entries name displayed in " +i);
 								alert(entries[i].fullPath+" entries root fullPath displayed in " +i);
 								//imgSrc[i] = entries.root.fullPath;
-								imgSrc[i] = "/"+directory.name+ "/"+ entries.name;
-								alert(imgSrc[i]+"image source saved")
+								//imgSrc[i] = "/"+directory.name+ "/"+ entries.name;
+								//alert(imgSrc[i]+"image source saved")
+								imgSrc[i] = readFileURL(entries[i].fullPath);
+								alert(imgSrc[i]+" -->imgSrc");
 							}
 
 							displayImages();
@@ -48,4 +50,10 @@ function displayImages () {
 	for (var i = 0; i <= imgSrc.length; i++) {
 		$("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+imgSrc[i]+"'/>");
 	};
+}
+
+function readFileURL(file){
+	alert("inside readFileURL");
+	var reader = new FileReader();
+    return reader.readAsDataURL(file);
 }
