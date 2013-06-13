@@ -1,4 +1,5 @@
 
+var imgSrc = new Array();
 
 function viewGallery (){
 
@@ -19,11 +20,14 @@ function viewGallery (){
 								//console.log(entries[i].name);
 								alert(entries[i].name+" entries name displayed in " +i);
 								alert(entries[i].fullPath+" entries fullPath displayed in " +i);
+								imgSrc[i] = entries.fullPath;
 							}
 						});
                               
                 }, resOnError);
        }, resOnError);
+
+	displayImages();
 			
 }
 
@@ -31,3 +35,10 @@ function resOnError(error) {
          //console.log("Error creating directory "+error.code); 
          alert("Error can not create directory" +error.code)
 } 
+
+function displayImages () {
+	var i;
+	for (var i = 0; i <= imgSrc.length; i++) {
+		$("#gallery-content").append("<img id='img"+i+"' src='"+imgSrc[i]+"' width='200px' height='200px'/>");
+	};
+}
