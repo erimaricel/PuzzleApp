@@ -6,12 +6,12 @@ function viewGallery (){
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, 
 	
 		function(fileSys) {
-            alert("inside fileSys function");
+            //alert("inside fileSys function");
             fileSys.root.getDirectory("PuzzlePic", {create:true, exclusive: false},
                 function(directory) {
-                    alert("inside directory");
-                    alert(directory.fullPath+" -->value returned by getDirectory fullPath");
-                    alert(directory.name+" -->value returned by getDirectory name");
+                    //alert("inside directory");
+                    //alert(directory.fullPath+" -->value returned by getDirectory fullPath");
+                    //alert(directory.name+" -->value returned by getDirectory name");
                     //var myPath = fs.root.PuzzlePic;
 					//console.log("Root = " + fs.root.fullPath);
 					var directoryReader = directory.createReader();
@@ -28,15 +28,17 @@ function viewGallery (){
 								//imgSrc[i] = readFileURL(entries[i]);
 								//alert(imgSrc[i]+" -->imgSrc");
 								var file = entries[i];
-                
+                				alert(file+" file inside loop");
 				                var picReader = new FileReader();
 				                
 				               // picReader.addEventListener("load",function(event){
 				                    
-				                 picReader.onload = function(event) {
+				                 picReader.onloadend = function(event) {
 								    console.log(event.target.result);
 								    alert("inside picReader onload");
+								    alert(event.target.result);
 								    var mySource = event.target.result;
+								    alert(mySource+" mySource value");
 								     $("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+mySource+"'/>"); 
 
 								};   //var picFile = event.target;
@@ -65,16 +67,3 @@ function resOnError(error) {
          alert("Error can not create directory" +error.code)
 } 
 
-function displayImages () {
-	alert("inside displayImages function");
-	var i;
-	for (var i = 0; i <= imgSrc.length; i++) {
-		$("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+imgSrc[i]+"'/>");
-	};
-}
-
-function readFileURL(file){
-	alert("inside readFileURL");
-	var reader = new FileReader();
-    return reader.readAsDataURL(file);
-}
