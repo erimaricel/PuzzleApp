@@ -16,6 +16,7 @@ function viewGallery (){
 					var directoryReader = directory.createReader();
 						directoryReader.readEntries(function(entries) {
 							var i;
+							imgSrc.length = entries.length;
 							for (i=0; i<entries.length; i++) {
 								//console.log(entries[i].name);
 								alert(entries[i].name+" entries name displayed in " +i);
@@ -42,6 +43,6 @@ function displayImages () {
 	alert("inside displayImages function");
 	var i;
 	for (var i = 0; i <= imgSrc.length; i++) {
-		$("#gallery-content").append("<img id='img"+i+"' src='"+imgSrc[i]+"' width='200px' height='200px'/>");
+		$("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+imgSrc[i]+"'/>");
 	};
 }
