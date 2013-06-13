@@ -27,17 +27,23 @@ function viewGallery (){
 								//alert(imgSrc[i]+"image source saved")
 								//imgSrc[i] = readFileURL(entries[i]);
 								//alert(imgSrc[i]+" -->imgSrc");
-								var file = files[i];
+								var file = entries[i];
                 
 				                var picReader = new FileReader();
 				                
-				                picReader.addEventListener("load",function(event){
+				               // picReader.addEventListener("load",function(event){
 				                    
-				                    var picFile = event.target;
+				                 picReader.onload = function(event) {
+								    console.log(event.target.result);
+								    alert("inside picReader onload");
+								    var mySource = event.target.result;
+								     $("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+mySource+"'/>"); 
+
+								};   //var picFile = event.target;
 				                    
-				                    $("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+picFile.result+"'/>");           
+				                             
 				                
-				                });
+				               // });
 				                
 				                 //Read the image
 				                picReader.readAsDataURL(file);
