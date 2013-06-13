@@ -22,12 +22,14 @@ function viewGallery (){
 								alert(entries[i].fullPath+" entries fullPath displayed in " +i);
 								imgSrc[i] = entries.fullPath;
 							}
+
+							displayImages();
 						});
                               
                 }, resOnError);
        }, resOnError);
 
-	displayImages();
+	
 			
 }
 
