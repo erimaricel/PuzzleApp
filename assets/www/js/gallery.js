@@ -20,13 +20,28 @@ function viewGallery (){
 							imgSrc.length = entries.length;
 							for (i=0; i<entries.length; i++) {
 								//console.log(entries[i].name);
-								alert(entries[i].name+" entries name displayed in " +i);
-								alert(entries[i].fullPath+" entries root fullPath displayed in " +i);
+								//alert(entries[i].name+" entries name displayed in " +i);
+								//alert(entries[i].fullPath+" entries root fullPath displayed in " +i);
 								//imgSrc[i] = entries.root.fullPath;
 								//imgSrc[i] = "/"+directory.name+ "/"+ entries.name;
 								//alert(imgSrc[i]+"image source saved")
-								imgSrc[i] = readFileURL(entries[i]);
-								alert(imgSrc[i]+" -->imgSrc");
+								//imgSrc[i] = readFileURL(entries[i]);
+								//alert(imgSrc[i]+" -->imgSrc");
+								var file = files[i];
+                
+				                var picReader = new FileReader();
+				                
+				                picReader.addEventListener("load",function(event){
+				                    
+				                    var picFile = event.target;
+				                    
+				                    $("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+picFile.result+"'/>");           
+				                
+				                });
+				                
+				                 //Read the image
+				                picReader.readAsDataURL(file);
+
 							}
 
 							displayImages();
