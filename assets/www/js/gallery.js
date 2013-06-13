@@ -25,7 +25,7 @@ function viewGallery (){
 								//imgSrc[i] = entries.root.fullPath;
 								//imgSrc[i] = "/"+directory.name+ "/"+ entries.name;
 								//alert(imgSrc[i]+"image source saved")
-								imgSrc[i] = readFileURL(entries[i].fullPath);
+								imgSrc[i] = readFileURL(entries[i]);
 								alert(imgSrc[i]+" -->imgSrc");
 							}
 
