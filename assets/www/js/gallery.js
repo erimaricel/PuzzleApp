@@ -17,7 +17,7 @@ function viewGallery (){
 					var directoryReader = directory.createReader();
 						directoryReader.readEntries(function(entries) {
 							var i;
-							imgSrc.length = entries.length;
+							//imgSrc.length = entries.length;
 							for (i=0; i<entries.length; i++) {
 								//console.log(entries[i].name);
 								//alert(entries[i].name+" entries name displayed in " +i);
@@ -27,7 +27,7 @@ function viewGallery (){
 								//alert(imgSrc[i]+"image source saved")
 								//imgSrc[i] = readFileURL(entries[i]);
 								//alert(imgSrc[i]+" -->imgSrc");
-								var file = entries[i];
+								var file = entries;
                 				alert(file+" file inside loop");
 				                var picReader = new FileReader();
 				                
