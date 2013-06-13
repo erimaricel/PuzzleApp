@@ -10,7 +10,8 @@ function viewGallery (){
             fileSys.root.getDirectory("PuzzlePic", {create:true, exclusive: false},
                 function(directory) {
                     alert("inside directory");
-                    alert(directory.fullPath+" -->value returned by getDirectory");
+                    alert(directory.fullPath+" -->value returned by getDirectory fullPath");
+                    alert(directory.name+" -->value returned by getDirectory name");
                     //var myPath = fs.root.PuzzlePic;
 					//console.log("Root = " + fs.root.fullPath);
 					var directoryReader = directory.createReader();
@@ -22,7 +23,8 @@ function viewGallery (){
 								alert(entries[i].name+" entries name displayed in " +i);
 								alert(entries[i].fullPath+" entries root fullPath displayed in " +i);
 								//imgSrc[i] = entries.root.fullPath;
-								imgSrc[i] = entries.name;
+								imgSrc[i] = "/"+directory.name+ "/"+ entries.name;
+								alert(imgSrc[i]+"image source saved")
 							}
 
 							displayImages();
