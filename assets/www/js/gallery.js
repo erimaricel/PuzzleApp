@@ -27,8 +27,8 @@ function viewGallery (){
 								//alert(imgSrc[i]+"image source saved")
 								//imgSrc[i] = readFileURL(entries[i]);
 								//alert(imgSrc[i]+" -->imgSrc");
-								var file = entries;
-                				alert(file+" file inside loop");
+								//var file = entries;
+                				//alert(file+" file inside loop");
 				                var picReader = new FileReader();
 				                
 				               // picReader.addEventListener("load",function(event){
@@ -36,6 +36,7 @@ function viewGallery (){
 				                 picReader.onloadend = function(event) {
 								    console.log(event.target.result);
 								    alert("inside picReader onload");
+								    init(event.target.result);
 								    alert(event.target.result);
 								    var mySource = event.target.result;
 								    alert(mySource+" mySource value");
@@ -48,7 +49,7 @@ function viewGallery (){
 				               // });
 				                
 				                 //Read the image
-				                picReader.readAsDataURL(file);
+				                picReader.readAsDataURL(entries[i]);
 
 							}
 
