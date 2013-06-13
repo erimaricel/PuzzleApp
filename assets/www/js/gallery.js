@@ -19,6 +19,7 @@ function viewGallery (){
 							var i;
 							//imgSrc.length = entries.length;
 							for (i=0; i<entries.length; i++) {
+								$("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+entries[i].fullPath+"'/>"); 
 								//console.log(entries[i].name);
 								//alert(entries[i].name+" entries name displayed in " +i);
 								//alert(entries[i].fullPath+" entries root fullPath displayed in " +i);
@@ -29,27 +30,27 @@ function viewGallery (){
 								//alert(imgSrc[i]+" -->imgSrc");
 								//var file = entries;
                 				//alert(file+" file inside loop");
-				                var picReader = new FileReader();
+				             /*   var picReader = new FileReader();
 				                
 				               // picReader.addEventListener("load",function(event){
 				                    
 				                 picReader.onloadend = function(event) {
 								    console.log(event.target.result);
 								    alert("inside picReader onload");
-								    init(event.target.result);
+								    //init(event.target.result);
 								    alert(event.target.result);
 								    var mySource = event.target.result;
 								    alert(mySource+" mySource value");
 								     $("#gallery-content").append("<img class='gallery-image' id='img"+i+"' src='"+mySource+"'/>"); 
 
 								};   //var picFile = event.target;
-				                    
+				                    */
 				                             
 				                
 				               // });
 				                
 				                 //Read the image
-				                picReader.readAsDataURL(entries[i]);
+				                //picReader.readAsDataURL(entries[i]);
 
 							}
 
